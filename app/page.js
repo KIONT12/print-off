@@ -1,6 +1,8 @@
 'use client';
 
 import { useState } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
 import { Calendar, Trophy, Users, Target, Phone, Mail, MapPin, Star, Clock, Award } from 'lucide-react';
 
 export default function Home() {
@@ -94,10 +96,12 @@ export default function Home() {
             <div className="flex items-center space-x-4">
               {/* Logo */}
               <div className="flex-shrink-0">
-                <img 
+                <Image 
                   src="/logo.png" 
                   alt="New Force Basketball Club Logo" 
-                  className="w-16 h-16 object-contain"
+                  width={64}
+                  height={64}
+                  className="object-contain"
                 />
               </div>
               {/* Team Name */}
@@ -110,10 +114,10 @@ export default function Home() {
             </div>
             <nav className="hidden md:flex space-x-8">
               <a href="#home" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
-              <a href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</a>
-              <a href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</a>
-              <a href="/5x5" className="text-gray-300 hover:text-cyan-400 transition-colors">5x5</a>
-              <a href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live Stream</a>
+              <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
+              <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
+              <Link href="/5x5" className="text-gray-300 hover:text-cyan-400 transition-colors">5x5</Link>
+              <Link href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live Stream</Link>
               <a href="#contact" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</a>
             </nav>
             <div className="flex items-center space-x-4">
@@ -193,10 +197,12 @@ export default function Home() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <img 
+                <Image 
                   src="/logo.png" 
                   alt="New Force Basketball Club Logo" 
-                  className="w-10 h-10 object-contain"
+                  width={40}
+                  height={40}
+                  className="object-contain"
                 />
                 <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   New Force Basketball
