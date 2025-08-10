@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ArrowLeft, User, Plus, Calendar, MapPin, Trophy } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function RosterPage() {
   const [oldPlayers, setOldPlayers] = useState([
@@ -101,9 +102,11 @@ export default function RosterPage() {
                 animation: `float ${3 + (i % 3)}s ease-in-out infinite`,
                 animationDelay: `${(i % 5) * 0.5}s`
               }}>
-                <img 
+                <Image 
                   src="/logo.png" 
                   alt="New Force Logo" 
+                  width={128}
+                  height={128}
                   className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 object-contain hover:scale-110 transition-transform duration-300"
                   style={{
                     filter: 'drop-shadow(0 0 12px rgba(6, 182, 212, 0.6)) brightness(1.2) contrast(1.1)'
@@ -134,9 +137,11 @@ export default function RosterPage() {
               <div className="flex items-center space-x-4">
                 {/* Logo */}
                 <div className="flex-shrink-0">
-                  <img 
+                  <Image 
                     src="/logo.png" 
                     alt="New Force Basketball Club Logo" 
+                    width={64}
+                    height={64}
                     className="w-16 h-16 object-contain"
                   />
                 </div>
@@ -148,13 +153,13 @@ export default function RosterPage() {
                   <p className="text-sm text-gray-300 mt-1">Basketball Club</p>
                 </div>
               </div>
-                             <nav className="hidden md:flex space-x-8">
-                 <Link href="/" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</Link>
-                 <a href="#" className="text-cyan-400 font-semibold">Roster</a>
-                 <a href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</a>
-                 <a href="/5x5" className="text-gray-300 hover:text-cyan-400 transition-colors">5x5</a>
-                 <a href="#" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</a>
-               </nav>
+              <nav className="hidden md:flex space-x-8">
+                <Link href="/" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</Link>
+                <Link href="/tgbl" className="text-gray-300 hover:text-cyan-400 transition-colors">TGBL</Link>
+                <Link href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live</Link>
+                <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
+                <a href="#" className="text-cyan-400 font-semibold">Roster</a>
+              </nav>
               <div className="flex items-center space-x-4">
                 <Link href="/" className="flex items-center space-x-2 text-gray-300 hover:text-cyan-400 transition-colors">
                   <ArrowLeft className="w-5 h-5" />
@@ -397,9 +402,11 @@ export default function RosterPage() {
             <div className="grid md:grid-cols-4 gap-8">
               <div>
                 <div className="flex items-center space-x-3 mb-4">
-                  <img 
+                  <Image 
                     src="/logo.png" 
                     alt="New Force Basketball Club Logo" 
+                    width={40}
+                    height={40}
                     className="w-10 h-10 object-contain"
                   />
                   <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
@@ -422,7 +429,7 @@ export default function RosterPage() {
               <div>
                 <h4 className="font-semibold mb-4">Fan Zone</h4>
                 <ul className="space-y-2 text-gray-400">
-                  <li><a href="#" className="hover:text-white transition-colors">Buy Tickets</a></li>
+
                   <li><a href="#" className="hover:text-white transition-colors">Merchandise</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">Season Pass</a></li>
                   <li><a href="#" className="hover:text-white transition-colors">Fan Club</a></li>

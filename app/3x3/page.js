@@ -3,6 +3,7 @@
 import { useState } from 'react';
 import { ArrowLeft, Trophy, Users, Clock, MapPin, Target, Calendar, Star, Award } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function ThreeOnThreePage() {
   const [activeTab, setActiveTab] = useState('tournaments');
@@ -122,9 +123,11 @@ export default function ThreeOnThreePage() {
                 animation: `float ${3 + (i % 3)}s ease-in-out infinite`,
                 animationDelay: `${(i % 5) * 0.5}s`
               }}>
-                <img 
+                <Image 
                   src="/logo.png" 
                   alt="New Force Logo" 
+                  width={128}
+                  height={128}
                   className="w-20 h-20 md:w-24 md:h-24 lg:w-28 lg:h-28 xl:w-32 xl:h-32 object-contain hover:scale-110 transition-transform duration-300"
                   style={{
                     filter: 'drop-shadow(0 0 12px rgba(251, 146, 60, 0.6)) brightness(1.1) contrast(1.1)'
@@ -153,9 +156,11 @@ export default function ThreeOnThreePage() {
               <div className="flex items-center space-x-4">
                 {/* Logo */}
                 <div className="flex-shrink-0">
-                  <img 
+                  <Image 
                     src="/logo.png" 
                     alt="New Force Basketball Club Logo" 
+                    width={64}
+                    height={64}
                     className="w-16 h-16 object-contain"
                   />
                 </div>
@@ -169,10 +174,10 @@ export default function ThreeOnThreePage() {
               </div>
               <nav className="hidden md:flex space-x-8">
                 <Link href="/" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</Link>
-                <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
+                <Link href="/tgbl" className="text-gray-300 hover:text-cyan-400 transition-colors">TGBL</Link>
+                <Link href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live</Link>
                 <a href="#" className="text-orange-400 font-semibold">3x3</a>
-                                 <a href="/5x5" className="text-gray-300 hover:text-cyan-400 transition-colors">5x5</a>
-                <a href="#" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</a>
+                <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
               </nav>
               <div className="flex items-center space-x-4">
                 <Link href="/" className="flex items-center space-x-2 text-gray-300 hover:text-cyan-400 transition-colors">
@@ -397,9 +402,11 @@ export default function ThreeOnThreePage() {
             <div className="grid md:grid-cols-4 gap-8">
               <div>
                 <div className="flex items-center space-x-3 mb-4">
-                  <img 
+                  <Image 
                     src="/logo.png" 
                     alt="New Force Basketball Club Logo" 
+                    width={40}
+                    height={40}
                     className="w-10 h-10 object-contain"
                   />
                   <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">

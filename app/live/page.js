@@ -3,7 +3,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Play, Radio, Users, Calendar, Clock, AlertCircle, RefreshCw } from 'lucide-react';
+import { Play, Radio, Users, Calendar, Clock, AlertCircle, RefreshCw, Star, MapPin } from 'lucide-react';
 import { 
   checkLiveStream, 
   checkSpecificVideoLive,
@@ -22,11 +22,33 @@ export default function LiveStream() {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [lastChecked, setLastChecked] = useState(null);
-  const [autoPlay, setAutoPlay] = useState(true);
+  const [autoPlay, setAutoPlay] = useState(false);
 
   // API configuration
   const API_KEY = process.env.NEXT_PUBLIC_YOUTUBE_API_KEY;
   const CHANNEL_ID = BTL_CONFIG.channelId;
+
+  // New Force Full Schedule Data
+  const newForceSchedule = [
+    { home: 'Raw Camp', away: 'New Force', date: 'Oct.3', time: 'TBD', venue: 'Raw Camp Court', highlight: true },
+    { home: 'New Force', away: 'Bangkok Warriors', date: 'Oct.10', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'New Force', away: 'CNX Orion', date: 'Oct.17', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'Fully Feared', away: 'New Force', date: 'Oct.24', time: 'TBD', venue: 'Fully Feared Court', highlight: true },
+    { home: 'New Force', away: 'Krabi Bears', date: 'Oct.31', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'Naga Hunters', away: 'New Force', date: 'Nov.7', time: 'TBD', venue: 'Naga Hunters Court', highlight: true },
+    { home: 'New Force', away: 'Shoot it Dragons', date: 'Nov.14', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'ST Grizzlies', away: 'New Force', date: 'Nov.21', time: 'TBD', venue: 'ST Grizzlies Arena', highlight: true },
+    { home: 'New Force', away: 'Thai Gorillas', date: 'Nov.28', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'New Force', away: 'Raw Camp', date: 'Dec.5', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'Bangkok Warriors', away: 'New Force', date: 'Dec.12', time: 'TBD', venue: 'Bangkok Warriors Arena', highlight: true },
+    { home: 'CNX Orion', away: 'New Force', date: 'Dec.19', time: 'TBD', venue: 'CNX Orion Arena', highlight: true },
+    { home: 'New Force', away: 'Fully Feared', date: 'Dec.26', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'Krabi Bears', away: 'New Force', date: 'Jan.2', time: 'TBD', venue: 'Krabi Sports Complex', highlight: true },
+    { home: 'New Force', away: 'Naga Hunters', date: 'Jan.9', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'Shoot it Dragons', away: 'New Force', date: 'Jan.16', time: 'TBD', venue: 'Shoot it Dragons Court', highlight: true },
+    { home: 'New Force', away: 'ST Grizzlies', date: 'Jan.23', time: 'TBD', venue: 'New Force Arena', highlight: true },
+    { home: 'Thai Gorillas', away: 'New Force', date: 'Jan.30', time: 'TBD', venue: 'Thai Gorillas Arena', highlight: true }
+  ];
 
   // Check for live streams
   const checkLiveStreams = useCallback(async (showLoading = true) => {
@@ -54,10 +76,7 @@ export default function LiveStream() {
         setLiveVideoId(result.videoId);
         setLiveStreamData(result.streamData);
         
-        // If the specific game is live and auto-play is enabled, it will auto-play
-        if (result.isLive && autoPlay) {
-          console.log('Specific game detected live, auto-playing...');
-        }
+
       }
       
       // Also get upcoming streams
@@ -72,7 +91,7 @@ export default function LiveStream() {
       setError('Failed to check live streams: ' + err.message);
       setLoading(false);
     }
-  }, [API_KEY, autoPlay, CHANNEL_ID]);
+  }, [API_KEY, CHANNEL_ID]);
 
   useEffect(() => {
     checkLiveStreams();
@@ -98,19 +117,7 @@ export default function LiveStream() {
     });
   };
 
-  // Toggle auto-play setting
-  const handleAutoPlayToggle = (checked) => {
-    setAutoPlay(checked);
-    localStorage.setItem('autoPlayStreams', checked.toString());
-  };
 
-  // Load auto-play preference on mount
-  useEffect(() => {
-    const savedAutoPlay = localStorage.getItem('autoPlayStreams');
-    if (savedAutoPlay !== null) {
-      setAutoPlay(savedAutoPlay === 'true');
-    }
-  }, []);
 
   return (
     <div className="min-h-screen relative text-white overflow-hidden">
@@ -154,10 +161,10 @@ export default function LiveStream() {
               </div>
               <nav className="hidden md:flex space-x-8">
                 <Link href="/" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</Link>
-                <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
-                <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
-                <Link href="/5x5" className="text-gray-300 hover:text-cyan-400 transition-colors">5x5</Link>
+                <Link href="/tgbl" className="text-gray-300 hover:text-cyan-400 transition-colors">TGBL</Link>
                 <Link href="/live" className="text-cyan-400 font-semibold">Live Stream</Link>
+                <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
+                <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
               </nav>
                              <div className="flex items-center space-x-4">
                  <div className="flex items-center space-x-2">
@@ -305,7 +312,7 @@ export default function LiveStream() {
                         {/* Live Border Effect */}
                         <div className="absolute inset-0 border-2 border-red-500 rounded animate-pulse z-10 pointer-events-none"></div>
                         <iframe
-                          src={createEmbedUrl(liveVideoId, autoPlay)}
+                          src={createEmbedUrl(liveVideoId, false)}
                           title="Live Stream"
                           className="w-full h-full"
                           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -456,45 +463,106 @@ export default function LiveStream() {
                   </div>
                 </div>
 
-                {/* Stream Settings */}
-                <div className="bg-black/40 backdrop-blur-sm rounded-xl p-6 border border-cyan-400/20">
-                  <h3 className="text-xl font-bold text-white mb-4">Stream Settings</h3>
-                  <div className="space-y-3">
-                    <label className="flex items-center">
-                      <input 
-                        type="checkbox" 
-                        className="rounded mr-2" 
-                        checked={autoPlay}
-                        onChange={(e) => handleAutoPlayToggle(e.target.checked)}
-                      />
-                      <span className="text-gray-300">Auto-play live streams</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input type="checkbox" className="rounded mr-2" defaultChecked />
-                      <span className="text-gray-300">Notifications</span>
-                    </label>
-                    <label className="flex items-center">
-                      <input type="checkbox" className="rounded mr-2" />
-                      <span className="text-gray-300">High quality (uses more data)</span>
-                    </label>
+
+              </div>
+            </div>
+            
+            {/* New Force Full Schedule Section */}
+            <div className="mt-16">
+              <div className="text-center mb-12">
+                <h3 className="text-4xl font-black text-white mb-4 drop-shadow-lg" 
+                    style={{fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                  <span className="bg-gradient-to-r from-orange-400 via-red-500 to-yellow-500 bg-clip-text text-transparent">
+                    NEW FORCE FULL SCHEDULE
+                  </span>
+                </h3>
+                <p className="text-xl text-gray-300 mb-6">
+                  Complete TGBL 2025 Season Schedule for New Force Basketball Club
+                </p>
+                <div className="flex justify-center items-center space-x-4">
+                  <div className="flex items-center space-x-2 text-orange-400">
+                    <Star className="w-5 h-5" />
+                    <span className="font-semibold">All New Force Games</span>
                   </div>
-                  
-                  {/* API Status */}
-                  <div className="mt-4 pt-4 border-t border-gray-700">
-                    <div className="flex items-center justify-between text-sm">
-                      <span className="text-gray-400">API Status:</span>
-                      <span className={`font-semibold ${isApiConfigured() ? 'text-green-400' : 'text-orange-400'}`}>
-                        {isApiConfigured() ? 'Connected' : 'Not Configured'}
-                      </span>
+                  <div className="w-px h-6 bg-gray-600"></div>
+                  <div className="flex items-center space-x-2 text-cyan-400">
+                    <Calendar className="w-5 h-5" />
+                    <span className="font-semibold">TGBL 2025 Season</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Schedule Grid */}
+              <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+                {newForceSchedule.map((game, index) => (
+                  <div 
+                    key={index} 
+                    className="p-6 rounded-2xl border transition-all duration-300 hover:scale-[1.02] bg-gradient-to-r from-orange-500/20 via-red-500/20 to-yellow-500/20 border-orange-400/50 shadow-lg shadow-orange-500/25"
+                  >
+                    {/* Game Date & Time */}
+                    <div className="flex items-center justify-between mb-4">
+                      <div className="flex items-center space-x-2">
+                        <Calendar className="w-5 h-5 text-orange-400" />
+                        <span className="text-orange-300 font-bold">{game.date}</span>
+                      </div>
+                      <div className="flex items-center space-x-2">
+                        <Clock className="w-4 h-4 text-cyan-400" />
+                        <span className="text-cyan-300 text-sm">{game.time}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between text-sm mt-1">
-                      <span className="text-gray-400">Monitoring:</span>
-                      <span className="text-cyan-400">Specific Game</span>
+
+                    {/* Teams */}
+                    <div className="space-y-3 mb-4">
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-300 text-sm">Away</span>
+                        <span className="text-cyan-300 font-bold">{game.away}</span>
+                      </div>
+                      <div className="flex items-center justify-between">
+                        <span className="text-gray-300 text-sm">Home</span>
+                        <span className="text-cyan-300 font-bold">{game.home}</span>
+                      </div>
                     </div>
-                    <div className="flex items-center justify-between text-sm mt-1">
-                      <span className="text-gray-400">Video ID:</span>
-                      <span className="text-gray-300 text-xs font-mono">{BTL_CONFIG.specificGameVideoId}</span>
+
+                    {/* Venue */}
+                    <div className="flex items-center space-x-2 mb-4">
+                      <MapPin className="w-4 h-4 text-gray-400" />
+                      <span className="text-gray-400 text-sm">{game.venue}</span>
                     </div>
+
+                    {/* New Force Game Badge */}
+                    <div className="flex items-center space-x-2 bg-gradient-to-r from-orange-500/20 to-red-500/20 px-4 py-2 rounded-full border border-orange-400/50">
+                      <Star className="w-5 h-5 text-yellow-400 fill-current" />
+                      <span className="text-orange-300 font-bold">New Force Game</span>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              {/* Schedule Info */}
+              <div className="mt-12 text-center">
+                <div className="inline-block bg-gradient-to-r from-orange-500/20 via-red-500/20 to-yellow-500/20 backdrop-blur-sm rounded-2xl p-8 border border-orange-400/30 shadow-2xl">
+                  <h4 className="text-2xl font-bold text-white mb-4">TGBL 2025 Season</h4>
+                  <p className="text-gray-300 mb-4">
+                    New Force Basketball Club will play <span className="text-orange-300 font-bold">{newForceSchedule.length} games</span> in the 2025 TGBL season
+                  </p>
+                  <div className="grid grid-cols-2 gap-6 text-sm">
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-orange-400">{newForceSchedule.filter(g => g.home === 'New Force').length}</div>
+                      <div className="text-gray-400">Home Games</div>
+                    </div>
+                    <div className="text-center">
+                      <div className="text-2xl font-bold text-cyan-400">{newForceSchedule.filter(g => g.away === 'New Force').length}</div>
+                      <div className="text-gray-400">Away Games</div>
+                    </div>
+                  </div>
+                  <div className="mt-6">
+                    <Link 
+                      href="/tgbl" 
+                      className="inline-flex items-center space-x-2 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-white px-6 py-3 rounded-full font-semibold transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-cyan-500/25"
+                    >
+                      <span>View Full TGBL Schedule</span>
+                      <Calendar className="w-5 h-5" />
+                    </Link>
                   </div>
                 </div>
               </div>

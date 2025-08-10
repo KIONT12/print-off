@@ -79,8 +79,8 @@ export default function Home() {
           playsInline
           className="w-full h-full object-cover"
         >
-          <source src="/kj.mov" type="video/mp4" />
-          <source src="/kj.mov" type="video/quicktime" />
+          <source src="/pp.mov" type="video/mp4" />
+          <source src="/pp.mov" type="video/quicktime" />
           Your browser does not support the video tag.
         </video>
         {/* Dark overlay for better content readability */}
@@ -112,19 +112,15 @@ export default function Home() {
                 <p className="text-sm text-gray-300 mt-1">Basketball Club</p>
               </div>
             </div>
-            <nav className="hidden md:flex space-x-8">
-              <a href="#home" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
-              <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
-              <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
-              <Link href="/5x5" className="text-gray-300 hover:text-cyan-400 transition-colors">5x5</Link>
-              <Link href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live Stream</Link>
-              <a href="#contact" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</a>
-            </nav>
-            <div className="flex items-center space-x-4">
-              <button className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 px-4 py-2 rounded-lg font-semibold transition-colors">
-                Get Tickets
-              </button>
-            </div>
+                          <nav className="hidden md:flex space-x-8">
+                <a href="#home" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
+                <Link href="/tgbl" className="text-gray-300 hover:text-cyan-400 transition-colors">TGBL</Link>
+                <Link href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live Stream</Link>
+                <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
+                <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
+                <Link href="/contact" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</Link>
+              </nav>
+
           </div>
         </div>
       </header>
@@ -170,78 +166,18 @@ export default function Home() {
         </div>
       </section>
 
-
-
-
-
-
-      {/* New Section */}
-      <section className="py-20 px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center">
-            <h3 className="text-4xl font-bold text-white mb-8 drop-shadow-lg" style={{fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
-              YOUR CONTENT HERE
-            </h3>
-            <div className="bg-black/30 backdrop-blur-sm rounded-xl p-8 max-w-4xl mx-auto border border-cyan-400/20">
-              <p className="text-xl text-white max-w-3xl mx-auto drop-shadow-lg" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
-                This is your new section! Let me know what content you&apos;d like to add here - whether it&apos;s team information, programs, events, or anything else you have in mind.
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* Footer */}
-      <footer className="bg-black text-white py-12">
+      <footer className="bg-black/50 backdrop-blur-sm border-t border-cyan-400/20 py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
-              <div className="flex items-center space-x-3 mb-4">
-                <Image 
-                  src="/logo.png" 
-                  alt="New Force Basketball Club Logo" 
-                  width={40}
-                  height={40}
-                  className="object-contain"
-                />
-                <h3 className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                  New Force Basketball
-                </h3>
-              </div>
-              <p className="text-gray-400">
-                Striking like lightning with skill, passion, and determination. Join us for an electrifying season!
-              </p>
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="flex items-center space-x-4 mb-6 md:mb-0">
+              <Image src="/logo.png" width={40} height={40} alt="Logo" className="w-10 h-10" />
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Quick Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#roster" className="hover:text-white transition-colors">Team Roster</a></li>
-                <li><a href="#schedule" className="hover:text-white transition-colors">Game Schedule</a></li>
-                <li><a href="#stats" className="hover:text-white transition-colors">Season Stats</a></li>
-                <li><a href="#contact" className="hover:text-white transition-colors">Contact Us</a></li>
-              </ul>
+            <div className="text-gray-400 text-sm">
+              © 2024 Print Off Basketball. All rights reserved.
             </div>
-            <div>
-              <h4 className="font-semibold mb-4">Fan Zone</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Buy Tickets</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Merchandise</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Season Pass</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Fan Club</a></li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-semibold mb-4">Follow Us</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-white transition-colors">Instagram</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Twitter</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">Facebook</a></li>
-                <li><a href="#" className="hover:text-white transition-colors">YouTube</a></li>
-              </ul>
-            </div>
-          </div>
-          <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>&copy; 2024 New Force Basketball Club. All rights reserved.</p>
           </div>
         </div>
       </footer>
