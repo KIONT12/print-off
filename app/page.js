@@ -3,10 +3,11 @@
 import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Calendar, Trophy, Users, Target, Phone, Mail, MapPin, Star, Clock, Award } from 'lucide-react';
+import { Calendar, Trophy, Users, Target, Phone, Mail, MapPin, Star, Clock, Award, Menu, X } from 'lucide-react';
 
 export default function Home() {
   const [activeTab, setActiveTab] = useState('achievements');
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   const players = [
     { 
@@ -91,52 +92,79 @@ export default function Home() {
       <div className="relative z-10">
       {/* Header */}
       <header className="bg-black/20 backdrop-blur-sm border-b border-white/10">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center py-6">
-            <div className="flex items-center space-x-4">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
+          <div className="flex justify-between items-center py-3 sm:py-6">
+            <div className="flex items-center space-x-2 sm:space-x-4">
               {/* Logo */}
               <div className="flex-shrink-0">
                 <Image 
                   src="/logo.png" 
                   alt="New Force Basketball Club Logo" 
-                  width={64}
-                  height={64}
-                  className="object-contain"
+                  width={48}
+                  height={48}
+                  className="w-10 h-10 sm:w-16 sm:h-16 object-contain"
                 />
               </div>
               {/* Team Name */}
               <div className="flex-shrink-0">
-                <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
+                <h1 className="text-xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   New Force
                 </h1>
-                <p className="text-sm text-gray-300 mt-1">Basketball Club</p>
+                <p className="text-xs sm:text-sm text-gray-300 mt-0.5 sm:mt-1">Basketball Club</p>
               </div>
             </div>
-                          <nav className="hidden md:flex space-x-8">
-                <a href="#home" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
-                <Link href="/tgbl" className="text-gray-300 hover:text-cyan-400 transition-colors">TGBL</Link>
-                <Link href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live Stream</Link>
-                <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
-                <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
-                <Link href="/contact" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</Link>
-              </nav>
+            <nav className="hidden md:flex space-x-8">
+              <a href="#home" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</a>
+              <Link href="/tgbl" className="text-gray-300 hover:text-cyan-400 transition-colors">TGBL</Link>
+              <Link href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live Stream</Link>
+              <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
+              <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
+              <Link href="/contact" className="text-gray-300 hover:text-cyan-400 transition-colors">Contact</Link>
+            </nav>
 
+            {/* Mobile menu button */}
+            <button
+              type="button"
+              className="md:hidden inline-flex items-center justify-center p-2 rounded-md text-gray-300 hover:text-cyan-400 hover:bg-black/20 transition-colors"
+              onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            >
+              <span className="sr-only">Open main menu</span>
+              {mobileMenuOpen ? (
+                <X className="block h-6 w-6" />
+              ) : (
+                <Menu className="block h-6 w-6" />
+              )}
+            </button>
           </div>
+
+          {/* Mobile menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden">
+              <div className="px-2 pt-2 pb-3 space-y-1 bg-black/30 backdrop-blur-sm rounded-lg mt-2">
+                <a href="#home" className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-black/20 rounded-md transition-colors">Home</a>
+                <Link href="/tgbl" className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-black/20 rounded-md transition-colors">TGBL</Link>
+                <Link href="/live" className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-black/20 rounded-md transition-colors">Live Stream</Link>
+                <Link href="/3x3" className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-black/20 rounded-md transition-colors">3x3</Link>
+                <Link href="/roster" className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-black/20 rounded-md transition-colors">Roster</Link>
+                <Link href="/contact" className="block px-3 py-2 text-base font-medium text-gray-300 hover:text-cyan-400 hover:bg-black/20 rounded-md transition-colors">Contact</Link>
+              </div>
+            </div>
+          )}
         </div>
       </header>
 
       {/* Hero Section */}
-      <section id="home" className="py-20 px-4 sm:px-6 lg:px-8">
+      <section id="home" className="py-10 sm:py-20 px-3 sm:px-6 lg:px-8">
         <div className="max-w-7xl mx-auto text-center">
-          <h2 className="text-6xl md:text-7xl font-black mb-8 tracking-wider drop-shadow-2xl" style={{fontFamily: 'Impact, "Arial Black", "Franklin Gothic Bold", Charcoal, sans-serif', textShadow: '3px 3px 6px rgba(0,0,0,0.8)'}}>
+          <h2 className="text-4xl sm:text-6xl md:text-7xl font-black mb-6 sm:mb-8 tracking-wider drop-shadow-2xl" style={{fontFamily: 'Impact, "Arial Black", "Franklin Gothic Bold", Charcoal, sans-serif', textShadow: '3px 3px 6px rgba(0,0,0,0.8)'}}>
             <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">NEW FORCE</span>
             <br />
-            <span className="text-orange-400 text-5xl md:text-6xl">BASKETBALL</span>
+            <span className="text-orange-400 text-3xl sm:text-5xl md:text-6xl">BASKETBALL</span>
           </h2>
           
           {/* Mission Statement - Basketball Format */}
           <div className="max-w-4xl mx-auto">
-            <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 rounded-full p-6 shadow-2xl border-3 border-black">
+            <div className="relative bg-gradient-to-br from-orange-500 to-orange-600 rounded-full p-4 sm:p-6 shadow-2xl border-3 border-black">
               {/* Basketball texture lines */}
               <div className="absolute inset-0 rounded-full">
                 <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-0.5 h-full bg-black"></div>
@@ -146,14 +174,14 @@ export default function Home() {
               
               {/* Content */}
               <div className="relative z-10 text-center">
-                <h3 className="text-2xl md:text-3xl font-black text-white mb-4 drop-shadow-lg" style={{fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
+                <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-white mb-3 sm:mb-4 drop-shadow-lg" style={{fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '2px 2px 4px rgba(0,0,0,0.8)'}}>
                   MISSION STATEMENT
                 </h3>
-                <div className="text-white text-base md:text-lg leading-relaxed font-semibold max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
-                  <p className="mb-4">
+                <div className="text-white text-sm sm:text-base md:text-lg leading-relaxed font-semibold max-w-3xl mx-auto" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
+                  <p className="mb-3 sm:mb-4">
                     New Force Basketball Club is dedicated to <span className="text-cyan-200 font-bold">empowering athletes</span> through comprehensive training, strategic development, and international exposure.
                   </p>
-                  <p className="mb-4">
+                  <p className="mb-3 sm:mb-4">
                     Our mission extends to inspiring communities by promoting <span className="text-cyan-200 font-bold">sportsmanship, teamwork, and excellence</span> both on and off the court.
                   </p>
                   <p>
@@ -169,13 +197,13 @@ export default function Home() {
       
 
       {/* Footer */}
-      <footer className="bg-black/50 backdrop-blur-sm border-t border-cyan-400/20 py-12">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <footer className="bg-black/50 backdrop-blur-sm border-t border-cyan-400/20 py-8 sm:py-12">
+        <div className="max-w-7xl mx-auto px-3 sm:px-4 lg:px-8">
           <div className="flex flex-col md:flex-row items-center justify-between">
-            <div className="flex items-center space-x-4 mb-6 md:mb-0">
-              <Image src="/logo.png" width={40} height={40} alt="Logo" className="w-10 h-10" />
+            <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6 md:mb-0">
+              <Image src="/logo.png" width={40} height={40} alt="Logo" className="w-8 h-8 sm:w-10 sm:h-10" />
             </div>
-            <div className="text-gray-400 text-sm">
+            <div className="text-gray-400 text-xs sm:text-sm text-center md:text-left">
               © 2024 Print Off Basketball. All rights reserved.
             </div>
           </div>
