@@ -92,7 +92,7 @@ export default function Home() {
         
         {/* Animated particles overlay - Reduced on mobile for performance */}
         <div className="absolute inset-0 overflow-hidden">
-          {Array.from({ length: window.innerWidth < 768 ? 10 : 20 }, (_, i) => (
+          {Array.from({ length: 20 }, (_, i) => (
             <div
               key={i}
               className="absolute w-1 sm:w-2 h-1 sm:h-2 bg-cyan-400/30 rounded-full animate-pulse"
