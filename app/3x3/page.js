@@ -11,30 +11,91 @@ export default function ThreeOnThreePage() {
   const tournaments = [
     {
       id: 1,
-      name: 'Lightning Cup 3x3',
-      date: 'February 15, 2024',
-      location: 'Thunder Arena',
-      teams: 16,
-      status: 'Registration Open',
-      prize: '$5,000'
+      name: '3x3.EXE PREMIER THAILAND 2025 ROUND.1',
+      date: 'March 15, 2025',
+      location: 'CentralWorld Bangkok',
+      teams: 8,
+      status: 'Tickets Available',
+      prize: 'Professional League',
+      region: 'THAILAND',
+      category: 'MEN'
     },
     {
       id: 2,
-      name: 'Spring Thunder 3x3',
-      date: 'March 22, 2024',
-      location: 'Force Court',
-      teams: 24,
-      status: 'Coming Soon',
-      prize: '$7,500'
+      name: '3x3.EXE PREMIER THAILAND 2025 ROUND.2',
+      date: 'March 22, 2025',
+      location: 'CentralWorld Bangkok',
+      teams: 8,
+      status: 'Tickets Available',
+      prize: 'Professional League',
+      region: 'THAILAND',
+      category: 'MEN'
     },
     {
       id: 3,
-      name: 'Elite Force Championship',
-      date: 'April 18, 2024',
-      location: 'New Force Arena',
-      teams: 32,
-      status: 'Premium Event',
-      prize: '$10,000'
+      name: '3x3.EXE PREMIER THAILAND 2025 ROUND.3',
+      date: 'April 5, 2025',
+      location: 'CentralWorld Bangkok',
+      teams: 8,
+      status: 'Coming Soon',
+      prize: 'Professional League',
+      region: 'THAILAND',
+      category: 'MEN'
+    },
+    {
+      id: 4,
+      name: '3x3.EXE PREMIER THAILAND 2025 ROUND.4',
+      date: 'April 12, 2025',
+      location: 'CentralWorld Bangkok',
+      teams: 8,
+      status: 'Coming Soon',
+      prize: 'Professional League',
+      region: 'THAILAND',
+      category: 'MEN'
+    },
+    {
+      id: 5,
+      name: '3x3.EXE PREMIER THAILAND 2025 ROUND.5',
+      date: 'May 3, 2025',
+      location: 'CentralWorld Bangkok',
+      teams: 8,
+      status: 'Coming Soon',
+      prize: 'Professional League',
+      region: 'THAILAND',
+      category: 'MEN'
+    },
+    {
+      id: 6,
+      name: '3x3.EXE PREMIER THAILAND 2025 ROUND.6',
+      date: 'May 10, 2025',
+      location: 'CentralWorld Bangkok',
+      teams: 8,
+      status: 'Coming Soon',
+      prize: 'Professional League',
+      region: 'THAILAND',
+      category: 'MEN'
+    },
+    {
+      id: 7,
+      name: '3x3.EXE PREMIER THAILAND 2025 ROUND.7',
+      date: 'May 24, 2025',
+      location: 'CentralWorld Bangkok',
+      teams: 8,
+      status: 'Coming Soon',
+      prize: 'Professional League',
+      region: 'THAILAND',
+      category: 'MEN'
+    },
+    {
+      id: 8,
+      name: '3x3.EXE PREMIER THAILAND 2025 ROUND.8',
+      date: 'June 7, 2025',
+      location: 'CentralWorld Bangkok',
+      teams: 8,
+      status: 'Coming Soon',
+      prize: 'Professional League',
+      region: 'THAILAND',
+      category: 'MEN'
     }
   ];
 
@@ -152,6 +213,13 @@ export default function ThreeOnThreePage() {
         {/* Header */}
         <header className="bg-black/20 backdrop-blur-sm border-b border-white/10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* 3x3 Basketball Title at Top */}
+            <div className="text-center py-6">
+              <h2 className="text-5xl font-black mb-4 tracking-wider drop-shadow-2xl" style={{fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '3px 3px 6px rgba(0,0,0,0.8)'}}>
+                <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">3x3 BASKETBALL</span>
+              </h2>
+            </div>
+            
             <div className="flex justify-between items-center py-6">
               <div className="flex items-center space-x-4">
                 {/* Logo */}
@@ -189,17 +257,134 @@ export default function ThreeOnThreePage() {
           </div>
         </header>
 
-        {/* Page Title */}
+        {/* New Force Basketball Section */}
         <section className="py-12 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-5xl font-black mb-4 tracking-wider drop-shadow-2xl" style={{fontFamily: 'Impact, "Arial Black", sans-serif', textShadow: '3px 3px 6px rgba(0,0,0,0.8)'}}>
-              <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">3x3 BASKETBALL</span>
-            </h2>
-            <p className="text-xl text-white/80 max-w-2xl mx-auto drop-shadow-lg" style={{textShadow: '1px 1px 3px rgba(0,0,0,0.7)'}}>
-              The number one urban team sport in the world. Simple, fast, and electrifying.
-            </p>
+          <div className="max-w-7xl mx-auto">
+            {/* New Force Basketball Title */}
+            <div className="text-center mb-16">
+              <h3 className="text-2xl font-bold text-white mb-2 drop-shadow-lg">
+                <span className="bg-gradient-to-r from-orange-400 to-red-500 bg-clip-text text-transparent">
+                  🏀 NEW FORCE BASKETBALL 🏀
+                </span>
+              </h3>
+              <p className="text-sm text-gray-300 max-w-2xl mx-auto">
+                Watch the New Force 3x3 team in action - spinning basketball style!
+              </p>
+            </div>
+
+            {/* Basketball Design */}
+            <div className="flex justify-center">
+              <div className="relative max-w-xl">
+                {/* Basketball Frame */}
+                <div className="relative bg-gradient-to-br from-orange-800 via-orange-700 to-orange-600 rounded-full p-4 shadow-2xl border-4 border-orange-900 animate-spin" style={{animationDuration: '20s'}}>
+                  {/* Basketball Texture */}
+                  <div className="bg-gradient-to-br from-orange-700 via-orange-600 to-orange-500 rounded-full p-3 shadow-inner border-2 border-orange-800">
+                    {/* Basketball Panels and Seams */}
+                    <div className="absolute inset-2 rounded-full pointer-events-none">
+                      {/* Main vertical seam - thicker and more realistic */}
+                      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-4 h-full bg-orange-100/80 rounded-full shadow-lg"></div>
+                      
+                      {/* Main horizontal seam - thicker and more realistic */}
+                      <div className="absolute top-1/2 left-0 transform -translate-y-1/2 w-full h-4 bg-orange-100/80 rounded-full shadow-lg"></div>
+                      
+                      {/* Curved seams for basketball panels - more realistic */}
+                      <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border-4 border-orange-100/80 rounded-full shadow-lg"></div>
+                      
+                      {/* Additional panel lines - thicker */}
+                      <div className="absolute top-1/6 left-0 w-full h-3 bg-orange-100/60 rounded-full"></div>
+                      <div className="absolute top-5/6 left-0 w-full h-3 bg-orange-100/60 rounded-full"></div>
+                      
+                      {/* Side panel seams - thicker */}
+                      <div className="absolute top-1/3 left-0 w-full h-3 bg-orange-100/60 rounded-full"></div>
+                      <div className="absolute top-2/3 left-0 w-full h-3 bg-orange-100/60 rounded-full"></div>
+                      
+                      {/* Diagonal panel lines - thicker and more realistic */}
+                      <div className="absolute top-0 left-0 w-1/2 h-1/2 border-r-4 border-b-4 border-orange-100/70 rounded-br-full"></div>
+                      <div className="absolute top-0 right-0 w-1/2 h-1/2 border-l-4 border-b-4 border-orange-100/70 rounded-bl-full"></div>
+                      <div className="absolute bottom-0 left-0 w-1/2 h-1/2 border-r-4 border-t-4 border-orange-100/70 rounded-tr-full"></div>
+                      <div className="absolute bottom-0 right-0 w-1/2 h-1/2 border-l-4 border-t-4 border-orange-100/70 rounded-tl-full"></div>
+                      
+                      {/* Basketball texture dots - more realistic placement */}
+                      <div className="absolute top-1/5 left-1/5 w-3 h-3 bg-orange-100/50 rounded-full shadow-sm"></div>
+                      <div className="absolute top-1/5 right-1/5 w-3 h-3 bg-orange-100/50 rounded-full shadow-sm"></div>
+                      <div className="absolute bottom-1/5 left-1/5 w-3 h-3 bg-orange-100/50 rounded-full shadow-sm"></div>
+                      <div className="absolute bottom-1/5 right-1/5 w-3 h-3 bg-orange-100/50 rounded-full shadow-sm"></div>
+                      
+                      {/* Additional texture dots for realism */}
+                      <div className="absolute top-1/2 left-1/6 w-2 h-2 bg-orange-100/40 rounded-full"></div>
+                      <div className="absolute top-1/2 right-1/6 w-2 h-2 bg-orange-100/40 rounded-full"></div>
+                      <div className="absolute top-1/6 left-1/2 w-2 h-2 bg-orange-100/40 rounded-full"></div>
+                      <div className="absolute bottom-1/6 left-1/2 w-2 h-2 bg-orange-100/40 rounded-full"></div>
+                      
+                      {/* Basketball grip texture lines */}
+                      <div className="absolute top-1/8 left-0 w-full h-1 bg-orange-100/30 rounded-full"></div>
+                      <div className="absolute top-3/8 left-0 w-full h-1 bg-orange-100/30 rounded-full"></div>
+                      <div className="absolute top-5/8 left-0 w-full h-1 bg-orange-100/30 rounded-full"></div>
+                      <div className="absolute top-7/8 left-0 w-full h-1 bg-orange-100/30 rounded-full"></div>
+                    </div>
+
+                    {/* Video Container with Counter-Rotation */}
+                    <div className="relative bg-black rounded-full overflow-hidden shadow-2xl border-4 border-orange-100">
+                      {/* Counter-rotating video wrapper to keep video straight */}
+                      <div className="animate-spin" style={{animationDuration: '20s', animationDirection: 'reverse'}}>
+                        <video 
+                          autoPlay 
+                          loop 
+                          muted 
+                          playsInline
+                          className="w-full h-full object-cover"
+                          poster="/logo.png"
+                          controls
+                          style={{minHeight: '60px', width: '100%'}}
+                        >
+                          <source src="/My Movie 3.mov" type="video/mp4" />
+                          <source src="/My Movie 3.mov" type="video/quicktime" />
+                          Your browser does not support the video tag.
+                        </video>
+                      </div>
+                     
+                      {/* Video Info Overlay - Only shows on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                        <div className="absolute bottom-4 left-4 text-white">
+                          <div className="text-sm font-semibold">New Force 3x3</div>
+                          <div className="text-xs text-gray-300">Click to play</div>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Basketball Details */}
+                    <div className="flex justify-center mt-6 space-x-4">
+                      <div className="w-5 h-5 bg-orange-100 rounded-full shadow-lg border border-orange-200"></div>
+                      <div className="w-5 h-5 bg-orange-100 rounded-full shadow-lg border border-orange-200"></div>
+                      <div className="w-5 h-5 bg-orange-100 rounded-full shadow-lg border border-orange-200"></div>
+                    </div>
+                  </div>
+
+                  {/* Basketball Stand */}
+                  <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-40 h-12 bg-gradient-to-t from-orange-950 to-orange-800 rounded-b-full border-t-4 border-orange-600 shadow-2xl">
+                    {/* Stand texture lines */}
+                    <div className="absolute top-2 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-orange-600/50 rounded-full"></div>
+                    <div className="absolute top-6 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-orange-600/50 rounded-full"></div>
+                  </div>
+                </div>
+
+                {/* Basketball Bouncing Animation */}
+                <div className="absolute -top-8 -right-8 w-16 h-16 animate-bounce">
+                  <div className="w-full h-full bg-gradient-to-br from-orange-600 to-orange-700 rounded-full border-4 border-orange-500 shadow-2xl flex items-center justify-center">
+                    {/* Basketball seams */}
+                    <div className="w-1 h-full bg-orange-300 rounded-full"></div>
+                    <div className="absolute top-1/2 left-0 w-full h-1 bg-orange-300 rounded-full"></div>
+                    {/* Additional texture */}
+                    <div className="absolute top-1/4 left-1/4 w-1/2 h-1/2 border-2 border-orange-300/60 rounded-full"></div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
+
+        {/* Clear Separation */}
+        <div className="h-16"></div>
 
         {/* Tab Navigation */}
         <section className="pb-8 px-4 sm:px-6 lg:px-8">
@@ -225,42 +410,48 @@ export default function ThreeOnThreePage() {
             {/* Tournaments Tab */}
             {activeTab === 'tournaments' && (
               <div>
-                <h3 className="text-3xl font-bold text-center mb-12 text-white drop-shadow-lg">Upcoming Tournaments</h3>
+                                 <h3 className="text-3xl font-bold text-center mb-12 text-white drop-shadow-lg">3x3.EXE PREMIER THAILAND 2025 Schedule</h3>
                 <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
                   {tournaments.map((tournament) => (
                     <div key={tournament.id} className="bg-black/30 backdrop-blur-sm rounded-lg p-6 border border-orange-400/30 hover:border-orange-400/70 transition-all">
-                      <div className="mb-4">
-                        <h4 className="text-xl font-semibold text-white mb-2">{tournament.name}</h4>
-                        <div className="space-y-2 text-sm">
-                          <div className="flex items-center space-x-2 text-gray-300">
-                            <Calendar className="w-4 h-4" />
-                            <span>{tournament.date}</span>
-                          </div>
-                          <div className="flex items-center space-x-2 text-gray-300">
-                            <MapPin className="w-4 h-4" />
-                            <span>{tournament.location}</span>
-                          </div>
-                          <div className="flex items-center space-x-2 text-gray-300">
-                            <Users className="w-4 h-4" />
-                            <span>{tournament.teams} Teams</span>
-                          </div>
-                          <div className="flex items-center space-x-2 text-yellow-400">
-                            <Trophy className="w-4 h-4" />
-                            <span>{tournament.prize} Prize Pool</span>
-                          </div>
-                        </div>
-                      </div>
+                                             <div className="mb-4">
+                         <h4 className="text-xl font-semibold text-white mb-2">{tournament.name}</h4>
+                         <div className="space-y-2 text-sm">
+                           <div className="flex items-center space-x-2 text-gray-300">
+                             <Calendar className="w-4 h-4" />
+                             <span>{tournament.date}</span>
+                           </div>
+                           <div className="flex items-center space-x-2 text-gray-300">
+                             <MapPin className="w-4 h-4" />
+                             <span>{tournament.location}</span>
+                           </div>
+                           <div className="flex items-center space-x-2 text-gray-300">
+                             <Users className="w-4 h-4" />
+                             <span>{tournament.teams} {typeof tournament.teams === 'number' ? 'Teams' : ''}</span>
+                           </div>
+                           <div className="flex items-center space-x-2 text-cyan-400">
+                             <Target className="w-4 h-4" />
+                             <span>{tournament.region} - {tournament.category}</span>
+                           </div>
+                           <div className="flex items-center space-x-2 text-yellow-400">
+                             <Trophy className="w-4 h-4" />
+                             <span>{tournament.prize}</span>
+                           </div>
+                         </div>
+                       </div>
                       <div className="flex justify-between items-center">
-                        <span className={`px-3 py-1 rounded-full text-sm font-medium ${
-                          tournament.status === 'Registration Open' ? 'bg-green-500/20 text-green-400' :
-                          tournament.status === 'Coming Soon' ? 'bg-blue-500/20 text-blue-400' :
-                          'bg-purple-500/20 text-purple-400'
-                        }`}>
-                          {tournament.status}
-                        </span>
-                        <button className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 px-4 py-2 rounded text-sm font-semibold transition-colors">
-                          {tournament.status === 'Registration Open' ? 'Register Now' : 'Learn More'}
-                        </button>
+                                                 <span className={`px-3 py-1 rounded-full text-sm font-medium ${
+                           tournament.status === 'Sold Out' ? 'bg-red-500/20 text-red-400' :
+                           tournament.status === 'Tickets Available' ? 'bg-green-500/20 text-green-400' :
+                           tournament.status === 'No Tickets' ? 'bg-gray-500/20 text-gray-400' :
+                           'bg-purple-500/20 text-purple-400'
+                         }`}>
+                           {tournament.status}
+                         </span>
+                                                 <button className="bg-gradient-to-r from-orange-500 to-red-600 hover:from-orange-600 hover:to-red-700 px-4 py-2 rounded text-sm font-semibold transition-colors">
+                           {tournament.status === 'Tickets Available' ? 'Buy Tickets' : 
+                            tournament.status === 'Sold Out' ? 'Sold Out' : 'Learn More'}
+                         </button>
                       </div>
                     </div>
                   ))}
@@ -294,7 +485,7 @@ export default function ThreeOnThreePage() {
                         <div>
                           <h5 className="text-orange-400 font-semibold text-lg mb-3">Origins & History</h5>
                           <p className="text-gray-300 text-sm mb-4">
-                                                         Born from streetball culture in neighborhoods like Harlem&apos;s Rucker Park, 3x3 has evolved from 
+                            Born from streetball culture in neighborhoods like Harlem&apos;s Rucker Park, 3x3 has evolved from 
                             playground pickup games to an official Olympic sport since Tokyo 2020.
                           </p>
                           <p className="text-gray-300 text-sm">
@@ -373,26 +564,6 @@ export default function ThreeOnThreePage() {
                 </div>
               </div>
             )}
-          </div>
-        </section>
-
-        {/* Call to Action */}
-        <section className="py-16 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-4xl mx-auto text-center">
-            <div className="bg-gradient-to-r from-orange-500 to-red-600 rounded-lg p-8">
-              <h3 className="text-3xl font-bold text-white mb-4">Ready to Join the Action?</h3>
-              <p className="text-orange-100 mb-6 text-lg">
-                Experience the thrill of 3x3 basketball with New Force. Fast games, intense competition, and unforgettable moments.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                <button className="bg-white text-orange-600 px-8 py-3 rounded-lg font-semibold hover:bg-orange-50 transition-colors">
-                  Register for Tournament
-                </button>
-                <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white hover:text-orange-600 transition-colors">
-                  Learn More
-                </button>
-              </div>
-            </div>
           </div>
         </section>
 
