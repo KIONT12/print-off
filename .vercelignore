@@ -1,0 +1,13 @@
+cp
+nf
+.git
+*.mov
+*.MOV
+node_modules
+.next
+public/My Mov5.mov
+public/Screen23-2025 15-39-32_1.mov
+public/nff.png
+public/logo.png
+cp/**
+nf/**
