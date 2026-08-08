@@ -1,67 +1,139 @@
-/* Import Aw Siam font - must come first */
-@import url('https://fonts.googleapis.com/css2?family=Aw+Siam:wght@300;400;500;600;700&display=swap');
-
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --ink: #0c0c0d;
+  --asphalt: #161618;
+  --chalk: #f2f0e9;
+  --muted: #a8a59c;
+  --court: #d6ff3a;
+  --heat: #ff3b12;
+  --line: rgba(242, 240, 233, 0.14);
+  --background: var(--ink);
+  --foreground: var(--chalk);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-ink: var(--ink);
+  --color-asphalt: var(--asphalt);
+  --color-chalk: var(--chalk);
+  --color-muted: var(--muted);
+  --color-court: var(--court);
+  --color-heat: var(--heat);
+  --font-sans: var(--font-outfit);
+  --font-display: var(--font-bebas);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: 'Aw Siam', Arial, Helvetica, sans-serif;
+  background: var(--ink);
+  color: var(--chalk);
+  font-family: var(--font-outfit), "Segoe UI", sans-serif;
   -webkit-text-size-adjust: 100%;
-  -ms-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
-/* Apply Aw Siam font to all elements */
-* {
-  font-family: 'Aw Siam', Arial, Helvetica, sans-serif;
+.font-display {
+  font-family: var(--font-bebas), "Arial Narrow", Impact, sans-serif;
+  letter-spacing: 0.02em;
 }
 
-/* Mobile-specific optimizations */
+/* Court-line atmosphere (not a flat fill) */
+.bg-court-field {
+  background-color: var(--ink);
+  background-image:
+    linear-gradient(180deg, rgba(12, 12, 13, 0.2) 0%, rgba(12, 12, 13, 0.92) 100%),
+    linear-gradient(90deg, transparent 0%, transparent 48%, var(--line) 48%, var(--line) 52%, transparent 52%),
+    radial-gradient(circle at 50% 50%, transparent 18%, var(--line) 18.5%, var(--line) 19%, transparent 19.5%),
+    linear-gradient(180deg, var(--asphalt), var(--ink));
+}
+
+.nf-reveal {
+  animation: nf-rise 0.9s cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
+.nf-reveal-delay-1 {
+  animation-delay: 0.12s;
+}
+
+.nf-reveal-delay-2 {
+  animation-delay: 0.24s;
+}
+
+.nf-reveal-delay-3 {
+  animation-delay: 0.36s;
+}
+
+.nf-brand-glow {
+  text-shadow: 0 0 40px rgba(214, 255, 58, 0.18);
+}
+
+.nf-cta {
+  position: relative;
+  overflow: hidden;
+  transition: transform 0.25s ease, background-color 0.25s ease, color 0.25s ease;
+}
+
+.nf-cta::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 30%, rgba(255, 255, 255, 0.22) 48%, transparent 62%);
+  transform: translateX(-120%);
+  transition: transform 0.55s ease;
+}
+
+.nf-cta:hover::after {
+  transform: translateX(120%);
+}
+
+.nf-cta:hover {
+  transform: translateY(-2px);
+}
+
+@keyframes nf-rise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Keep video layers on their own compositor plane */
+video {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .nf-reveal,
+  .nf-reveal-delay-1,
+  .nf-reveal-delay-2,
+  .nf-reveal-delay-3 {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
 @media (max-width: 768px) {
   html {
-    font-size: 14px;
-  }
-  
-  body {
-    font-size: 14px;
-    line-height: 1.4;
-  }
-  
-  /* Ensure content doesn't overflow on mobile */
-  .max-w-7xl {
-    max-width: 100%;
-    padding-left: 1rem;
-    padding-right: 1rem;
-  }
-  
-  /* Better mobile spacing */
-  .py-10 {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
-  }
-  
-  .py-20 {
-    padding-top: 3rem;
-    padding-bottom: 3rem;
+    font-size: 15px;
   }
 }

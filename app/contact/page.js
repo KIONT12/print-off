@@ -4,6 +4,7 @@ import { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Mail, Phone, MapPin, Clock, Star, Trophy, Users } from 'lucide-react';
+import SiteNav from '../components/SiteNav';
 
 export default function Contact() {
   const [formData, setFormData] = useState({
@@ -27,73 +28,32 @@ export default function Contact() {
   };
 
   return (
-    <div className="min-h-screen relative text-white overflow-hidden">
-      {/* Full Page Video Background */}
-      <div className="fixed inset-0 w-full h-full z-0">
-        <video 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          className="w-full h-full object-cover"
-        >
-          <source src="/pp.mov" type="video/mp4" />
-          <source src="/pp.mov" type="video/quicktime" />
-          Your browser does not support the video tag.
-        </video>
-        {/* Dark overlay for better content readability */}
-        <div className="absolute inset-0 bg-black/50"></div>
+    <div className="min-h-screen relative text-chalk overflow-hidden bg-ink">
+      {/* Dense logo wallpaper — CSS tile (fast; no 100 separate image loads) */}
+      <div className="fixed inset-0 z-0 bg-ink">
+        <div
+          className="absolute inset-0 opacity-35"
+          style={{
+            backgroundImage: "url('/logo-tile.png')",
+            backgroundSize: '96px 96px',
+            backgroundRepeat: 'repeat',
+          }}
+          aria-hidden="true"
+        />
+        <div className="absolute inset-0 bg-ink/45" />
       </div>
       
-      {/* All content with relative positioning */}
       <div className="relative z-10">
-        {/* Header */}
-        <header className="bg-black/20 backdrop-blur-sm border-b border-white/10">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex justify-between items-center py-6">
-              <div className="flex items-center space-x-4">
-                {/* Logo */}
-                <div className="flex-shrink-0">
-                  <Link href="/">
-                    <Image 
-                      src="/logo.png" 
-                      alt="New Force Basketball Club Logo" 
-                      width={64}
-                      height={64}
-                      className="object-contain"
-                    />
-                  </Link>
-                </div>
-                {/* Team Name */}
-                <div className="flex-shrink-0">
-                  <h1 className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
-                    New Force
-                  </h1>
-                  <p className="text-sm text-gray-300 mt-1">Basketball Club</p>
-                </div>
-              </div>
-              <nav className="hidden md:flex space-x-8">
-                <Link href="/" className="text-gray-300 hover:text-cyan-400 transition-colors">Home</Link>
-                <Link href="/tgbl" className="text-gray-300 hover:text-cyan-400 transition-colors">TGBL</Link>
-                <Link href="/live" className="text-gray-300 hover:text-cyan-400 transition-colors">Live Stream</Link>
-                <Link href="/3x3" className="text-gray-300 hover:text-cyan-400 transition-colors">3x3</Link>
-                <Link href="/roster" className="text-gray-300 hover:text-cyan-400 transition-colors">Roster</Link>
-                <Link href="/contact" className="text-cyan-400 font-semibold">Contact</Link>
-              </nav>
-            </div>
-          </div>
-        </header>
+        <SiteNav active="/contact" variant="solid" />
 
-        {/* Hero Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8">
-          <div className="max-w-7xl mx-auto text-center">
-            <h2 className="text-6xl md:text-7xl font-black mb-8 tracking-wider drop-shadow-2xl" style={{fontFamily: 'Impact, "Arial Black", "Franklin Gothic Bold", Charcoal, sans-serif', textShadow: '3px 3px 6px rgba(0,0,0,0.8)'}}>
-              <span className="bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">CONTACT</span>
-              <br />
-              <span className="text-orange-400 text-5xl md:text-6xl">US</span>
+        <section className="px-4 py-16 sm:px-6 lg:px-8">
+          <div className="mx-auto max-w-7xl">
+            <p className="font-display text-sm tracking-[0.3em] text-court">GET IN TOUCH</p>
+            <h2 className="mt-3 font-display text-6xl tracking-wide text-chalk sm:text-8xl">
+              CONTACT
             </h2>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
-              Get in touch with us for any inquiries, partnerships, or to learn more about our basketball programs.
+            <p className="mt-4 max-w-2xl text-lg text-muted">
+              Tryouts, partnerships, sponsorships — reach the New Force staff.
             </p>
           </div>
         </section>
@@ -103,7 +63,7 @@ export default function Contact() {
           <div className="max-w-7xl mx-auto">
             <div className="grid lg:grid-cols-2 gap-12">
               {/* Contact Form */}
-              <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/20">
+              <div className="bg-black/80 rounded-2xl p-8 border border-cyan-400/20">
                 <h3 className="text-3xl font-bold text-white mb-6">Send us a Message</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
@@ -182,7 +142,7 @@ export default function Contact() {
               {/* Contact Information & Sponsorship */}
               <div className="space-y-8">
                 {/* Contact Info */}
-                <div className="bg-black/30 backdrop-blur-sm rounded-2xl p-8 border border-cyan-400/20">
+                <div className="bg-black/80 rounded-2xl p-8 border border-cyan-400/20">
                   <h3 className="text-3xl font-bold text-white mb-6">Get in Touch</h3>
                   <div className="space-y-6">
                     <div className="flex items-center space-x-4">
@@ -228,7 +188,7 @@ export default function Contact() {
                 </div>
 
                 {/* Sponsorship Section */}
-                <div className="bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-red-500/20 backdrop-blur-sm rounded-2xl p-6 border border-orange-400/30 shadow-xl">
+                <div className="bg-gradient-to-r from-yellow-500/20 via-orange-500/20 to-red-500/20  rounded-2xl p-6 border border-orange-400/30 shadow-xl">
                   <div className="text-center mb-4">
                     <h4 className="text-xl font-bold text-white mb-2">
                       <span className="bg-gradient-to-r from-yellow-400 to-orange-500 bg-clip-text text-transparent">
@@ -287,12 +247,35 @@ export default function Contact() {
           </div>
         </section>
 
+        {/* Highlight — static media (no autoplay / debug test videos) */}
+        <section className="py-12 px-4 sm:px-6 lg:px-8">
+          <div className="max-w-4xl mx-auto">
+            <div className="bg-black/80 rounded-2xl overflow-hidden shadow-2xl border-2 border-orange-400/60">
+              <div className="relative aspect-video">
+                <Image
+                  src="/IMG_1165.jpeg"
+                  alt="Javan Smith success story"
+                  fill
+                  sizes="(max-width: 896px) 100vw, 896px"
+                  className="object-cover"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-center">
+                  <h3 className="text-2xl font-bold text-orange-400">
+                    JAVAN SMITH SUCCESS STORY
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Footer */}
-        <footer className="bg-black/50 backdrop-blur-sm border-t border-cyan-400/20 py-12">
+        <footer className="bg-black/80 border-t border-cyan-400/20 py-12">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex flex-col md:flex-row items-center justify-between">
               <div className="flex items-center space-x-4 mb-6 md:mb-0">
-                <Image src="/logo.png" width={40} height={40} alt="Logo" className="w-10 h-10" />
+                <Image src="/logo-nav.png" width={40} height={40} alt="Logo" className="w-10 h-10" />
               </div>
               <div className="text-gray-400 text-sm">
                 © 2024 Print Off Basketball. All rights reserved.
