@@ -1,16 +1,25 @@
-import { Bebas_Neue, Outfit } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 
-const outfit = Outfit({
-  variable: "--font-outfit",
-  subsets: ["latin"],
-  weight: ["300", "400", "500", "600", "700"],
+const archivo = localFont({
+  src: "./fonts/Archivo.woff2",
+  variable: "--font-archivo",
+  weight: "400 700",
+  display: "swap",
 });
 
-const bebas = Bebas_Neue({
-  variable: "--font-bebas",
-  subsets: ["latin"],
-  weight: "400",
+const oswald = localFont({
+  src: "./fonts/Oswald.woff2",
+  variable: "--font-oswald",
+  weight: "400 700",
+  display: "swap",
+});
+
+const teko = localFont({
+  src: "./fonts/Teko.woff2",
+  variable: "--font-teko",
+  weight: "500 700",
+  display: "swap",
 });
 
 export const metadata = {
@@ -25,7 +34,9 @@ export default function RootLayout({ children }) {
       <head>
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       </head>
-      <body className={`${outfit.variable} ${bebas.variable} antialiased`}>
+      <body
+        className={`${archivo.className} ${archivo.variable} ${oswald.variable} ${teko.variable} antialiased`}
+      >
         {children}
       </body>
     </html>

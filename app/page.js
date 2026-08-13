@@ -3,57 +3,51 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import SiteNav from './components/SiteNav';
+import HoopTV from './components/HoopTV';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-ink text-chalk">
-      {/* Full-bleed hero plane */}
-      <section className="relative min-h-[100svh] overflow-hidden">
-        <div className="absolute inset-0">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="metadata"
-            poster="/IMG_1481.jpeg"
-            className="h-full w-full object-cover"
-          >
-            <source src="/hero.mp4" type="video/mp4" />
-          </video>
-          <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/55 to-ink/30" />
-          <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(12,12,13,0.55)_75%)]" />
-        </div>
+    <div className="min-h-screen relative bg-ink text-chalk overflow-hidden">
+      <div className="nf-logo-wall fixed inset-0 z-0 overflow-hidden">
+        <div className="nf-logo-wall__tiles" aria-hidden="true" />
+        <div className="nf-logo-wall__glow" />
+      </div>
 
+      <div className="relative z-10">
+      <section className="relative overflow-hidden">
         <SiteNav active="/" />
 
-        <div className="relative z-10 flex min-h-[100svh] flex-col justify-end px-4 pb-14 pt-28 sm:px-6 sm:pb-16 lg:px-10">
+        <div className="mx-auto w-full max-w-4xl px-3 pt-20 sm:px-6 sm:pt-24 lg:px-10">
+          <HoopTV src="/hero.mp4" />
+        </div>
+
+        <div className="px-4 pb-12 pt-3 sm:px-6 sm:pb-16 sm:pt-4 lg:px-10">
           <div className="mx-auto w-full max-w-7xl">
-            <p className="nf-reveal font-display text-sm tracking-[0.35em] text-court sm:text-base">
+            <p className="nf-reveal nf-on-video font-label text-xs text-flash sm:text-base">
               FIBA BASKETBALL CLUB
             </p>
 
-            <h1 className="nf-reveal nf-reveal-delay-1 nf-brand-glow mt-3 font-display text-[22vw] leading-[0.85] tracking-wide text-chalk sm:text-[18vw] md:text-[14vw] lg:text-[11rem]">
+            <h1 className="nf-reveal nf-reveal-delay-1 nf-on-video nf-wordmark mt-2 font-display text-5xl text-chalk sm:text-8xl md:text-9xl lg:text-[10rem]">
               NEW
               <br />
-              FORCE
+              <span className="text-court">FORCE</span>
             </h1>
 
             <div className="nf-reveal nf-reveal-delay-2 mt-6 flex max-w-xl flex-col gap-6 sm:mt-8">
-              <p className="text-base leading-relaxed text-chalk/85 sm:text-lg">
+              <p className="nf-on-video text-base leading-relaxed text-chalk sm:text-lg">
                 Training, competition, and international exposure for athletes who play with purpose.
               </p>
 
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Link
                   href="/roster"
-                  className="nf-cta inline-flex items-center justify-center bg-court px-7 py-3.5 font-display text-xl tracking-wide text-ink"
+                  className="nf-cta inline-flex items-center justify-center bg-court px-7 py-3.5 font-label text-lg tracking-[0.14em] text-white"
                 >
                   JOIN THE FORCE
                 </Link>
                 <Link
                   href="/3x3"
-                  className="nf-cta inline-flex items-center justify-center border border-chalk/40 px-7 py-3.5 font-display text-xl tracking-wide text-chalk hover:border-court hover:text-court"
+                  className="nf-cta inline-flex items-center justify-center border border-chalk/40 px-7 py-3.5 font-label text-lg tracking-[0.14em] text-chalk hover:border-court hover:text-court"
                 >
                   SEE 3x3
                 </Link>
@@ -67,8 +61,8 @@ export default function Home() {
       <section className="bg-court-field relative overflow-hidden px-4 py-20 sm:px-6 sm:py-28 lg:px-10">
         <div className="mx-auto grid max-w-7xl gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-end">
           <div>
-            <p className="font-display text-sm tracking-[0.3em] text-court">THE MISSION</p>
-            <h2 className="mt-3 font-display text-5xl leading-none tracking-wide text-chalk sm:text-7xl">
+            <p className="font-label text-sm text-flash">THE MISSION</p>
+            <h2 className="nf-wordmark mt-3 font-display text-4xl text-chalk sm:text-7xl">
               BUILD ATHLETES.
               <br />
               <span className="text-heat">RAISE THE STANDARD.</span>
@@ -83,8 +77,8 @@ export default function Home() {
       {/* Pathways */}
       <section className="border-t border-white/10 bg-asphalt px-4 py-20 sm:px-6 sm:py-24 lg:px-10">
         <div className="mx-auto max-w-7xl">
-          <p className="font-display text-sm tracking-[0.3em] text-court">ENTER THE GAME</p>
-          <h2 className="mt-3 font-display text-5xl tracking-wide text-chalk sm:text-6xl">
+          <p className="font-label text-sm text-flash">ENTER THE GAME</p>
+          <h2 className="nf-wordmark mt-3 font-display text-4xl text-chalk sm:text-7xl">
             WHERE TO GO NEXT
           </h2>
 
@@ -111,13 +105,13 @@ export default function Home() {
                 href={item.href}
                 className="group bg-ink p-8 transition-colors hover:bg-court"
               >
-                <h3 className="font-display text-4xl tracking-wide text-chalk transition-colors group-hover:text-ink">
+                <h3 className="font-display text-4xl text-chalk transition-colors group-hover:text-white">
                   {item.title}
                 </h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted transition-colors group-hover:text-ink/80">
+                <p className="mt-3 text-sm leading-relaxed text-muted transition-colors group-hover:text-white/80">
                   {item.copy}
                 </p>
-                <span className="mt-8 inline-block font-display text-lg tracking-wide text-court transition-colors group-hover:text-ink">
+                <span className="mt-8 inline-block font-label text-base tracking-[0.14em] text-court transition-colors group-hover:text-flash">
                   OPEN →
                 </span>
               </Link>
@@ -130,11 +124,12 @@ export default function Home() {
         <div className="mx-auto flex max-w-7xl flex-col items-start justify-between gap-6 sm:flex-row sm:items-center">
           <div className="flex items-center gap-3">
             <Image src="/logo-nav.png" width={36} height={36} alt="New Force" className="h-9 w-9 object-contain" />
-            <span className="font-display text-2xl tracking-wide text-chalk">NEW FORCE</span>
+            <span className="font-display text-2xl text-chalk">NEW FORCE</span>
           </div>
           <p className="text-sm text-muted">© {new Date().getFullYear()} New Force Basketball. All rights reserved.</p>
         </div>
       </footer>
+      </div>
     </div>
   );
 }

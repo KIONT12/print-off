@@ -31,7 +31,7 @@ export default function SiteNav({ active = '/', variant = 'overlay' }) {
             className="h-10 w-10 object-contain transition-transform duration-200 group-hover:scale-105 sm:h-11 sm:w-11"
             priority
           />
-          <span className="font-display text-2xl leading-none tracking-wide text-chalk sm:text-3xl">
+          <span className={`nf-wordmark font-display text-2xl text-chalk sm:text-3xl md:text-4xl ${variant === 'overlay' ? 'nf-on-video' : ''}`}>
             NEW FORCE
           </span>
         </Link>
@@ -43,8 +43,8 @@ export default function SiteNav({ active = '/', variant = 'overlay' }) {
               <Link
                 key={link.href}
                 href={link.href}
-                className={`text-sm font-medium uppercase tracking-[0.18em] transition-colors ${
-                  isActive ? 'text-court' : 'text-chalk/70 hover:text-chalk'
+                className={`font-label text-sm transition-colors ${
+                  isActive ? 'text-flash' : 'text-chalk/70 hover:text-court'
                 }`}
               >
                 {link.label}
@@ -73,8 +73,8 @@ export default function SiteNav({ active = '/', variant = 'overlay' }) {
                   key={link.href}
                   href={link.href}
                   onClick={() => setOpen(false)}
-                  className={`px-2 py-3 text-base font-medium uppercase tracking-[0.16em] ${
-                    isActive ? 'text-court' : 'text-chalk/80'
+                  className={`font-label px-2 py-3 text-base ${
+                    isActive ? 'text-flash' : 'text-chalk/80'
                   }`}
                 >
                   {link.label}

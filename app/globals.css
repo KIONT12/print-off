@@ -5,9 +5,10 @@
   --asphalt: #161618;
   --chalk: #f2f0e9;
   --muted: #a8a59c;
-  --court: #d6ff3a;
-  --heat: #ff3b12;
-  --line: rgba(242, 240, 233, 0.14);
+  --court: #00a3dc;
+  --heat: #fc9c00;
+  --flash: #f5e400;
+  --line: rgba(0, 163, 220, 0.22);
   --background: var(--ink);
   --foreground: var(--chalk);
 }
@@ -21,28 +22,73 @@
   --color-muted: var(--muted);
   --color-court: var(--court);
   --color-heat: var(--heat);
-  --font-sans: var(--font-outfit);
-  --font-display: var(--font-bebas);
+  --color-flash: var(--flash);
+  --font-sans: var(--font-archivo);
+  --font-display: var(--font-teko);
+  --font-label: var(--font-oswald);
 }
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
   background: var(--ink);
   color: var(--chalk);
-  font-family: var(--font-outfit), "Segoe UI", sans-serif;
+  font-family: var(--font-archivo), "Segoe UI", sans-serif;
+  font-weight: 500;
+  letter-spacing: 0.01em;
   -webkit-text-size-adjust: 100%;
   text-size-adjust: 100%;
 }
 
 .font-display {
-  font-family: var(--font-bebas), "Arial Narrow", Impact, sans-serif;
-  letter-spacing: 0.02em;
+  font-family: var(--font-teko), Impact, "Arial Black", sans-serif;
+  letter-spacing: -0.03em;
+  text-transform: uppercase;
+  font-weight: 600;
+  line-height: 0.78;
+}
+
+.font-label {
+  font-family: var(--font-oswald), "Arial Narrow", sans-serif;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.nf-wordmark {
+  display: block;
+  transform: skewX(-8deg);
+  transform-origin: left center;
 }
 
 /* Court-line atmosphere (not a flat fill) */
+.nf-logo-wall {
+  background-color: var(--ink);
+}
+
+.nf-logo-wall__tiles {
+  position: absolute;
+  inset: -25%;
+  background-image: url("/logo-tile.png");
+  background-size: 128px 128px;
+  background-repeat: repeat;
+  transform: rotate(-12deg);
+  opacity: 0.72;
+}
+
+.nf-logo-wall__glow {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgba(0, 163, 220, 0.22), transparent 52%),
+    radial-gradient(ellipse at 18% 80%, rgba(252, 156, 0, 0.16), transparent 42%),
+    radial-gradient(ellipse at 88% 18%, rgba(245, 228, 0, 0.1), transparent 38%);
+  pointer-events: none;
+}
+
 .bg-court-field {
   background-color: var(--ink);
   background-image:
@@ -69,7 +115,11 @@ body {
 }
 
 .nf-brand-glow {
-  text-shadow: 0 0 40px rgba(214, 255, 58, 0.18);
+  text-shadow: 0 0 40px rgba(0, 163, 220, 0.35);
+}
+
+.nf-on-video {
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.7);
 }
 
 .nf-cta {
