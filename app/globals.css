@@ -84,6 +84,16 @@ body {
   will-change: transform;
 }
 
+.nf-hoop-video::-webkit-media-controls,
+.nf-hoop-video::-webkit-media-controls-start-playback-button,
+.nf-hoop-video::-webkit-media-controls-overlay-play-button,
+.nf-hoop-video::-webkit-media-controls-enclosure {
+  display: none !important;
+  -webkit-appearance: none;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .nf-hoop-3d__floor {
   height: 2.5rem;
   margin-top: -0.75rem;

@@ -1,33 +1,52 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useLayoutEffect, useRef } from 'react';
 import Image from 'next/image';
 
 export default function HoopTV({ src, poster, showBall = true }) {
   const videoRef = useRef(null);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     const video = videoRef.current;
-    if (!video) return;
+    if (!video) return undefined;
 
-    video.muted = true;
-    video.defaultMuted = true;
-    video.playsInline = true;
+    const arm = () => {
+      video.muted = true;
+      video.defaultMuted = true;
+      video.volume = 0;
+      video.playsInline = true;
+      video.setAttribute('muted', '');
+      video.setAttribute('autoplay', '');
+      video.setAttribute('playsinline', '');
+      video.setAttribute('webkit-playsinline', 'true');
+    };
 
     const play = () => {
+      arm();
+      if (!video.paused) return;
       const attempt = video.play();
       if (attempt) attempt.catch(() => {});
     };
 
+    arm();
     play();
-    video.addEventListener('canplay', play);
-    video.addEventListener('loadeddata', play);
+
+    const events = ['canplay', 'canplaythrough', 'loadeddata', 'loadedmetadata', 'playing'];
+    events.forEach((name) => video.addEventListener(name, play));
     document.addEventListener('visibilitychange', play);
+    window.addEventListener('pointerdown', play);
+    window.addEventListener('touchstart', play, { passive: true });
+
+    const retry = window.setInterval(play, 300);
+    const stopRetry = window.setTimeout(() => window.clearInterval(retry), 8000);
 
     return () => {
-      video.removeEventListener('canplay', play);
-      video.removeEventListener('loadeddata', play);
+      events.forEach((name) => video.removeEventListener(name, play));
       document.removeEventListener('visibilitychange', play);
+      window.removeEventListener('pointerdown', play);
+      window.removeEventListener('touchstart', play);
+      window.clearInterval(retry);
+      window.clearTimeout(stopRetry);
     };
   }, [src]);
 
@@ -38,7 +57,13 @@ export default function HoopTV({ src, poster, showBall = true }) {
         style={{ top: '7.6%', left: '9.2%', width: '81.6%', height: '54.2%' }}
       >
         <video
-          ref={videoRef}
+          ref={(node) => {
+            videoRef.current = node;
+            if (!node) return;
+            node.muted = true;
+            node.defaultMuted = true;
+            node.volume = 0;
+          }}
           src={src}
           autoPlay
           loop
@@ -49,7 +74,6 @@ export default function HoopTV({ src, poster, showBall = true }) {
           disablePictureInPicture
           controls={false}
           className="nf-hoop-video h-full w-full bg-ink object-cover object-center"
-          {...{ 'webkit-playsinline': 'true' }}
         />
       </div>
 
@@ -67,7 +91,7 @@ export default function HoopTV({ src, poster, showBall = true }) {
           alt=""
           width={120}
           height={120}
-          className="absolute bottom-[2%] right-[18%] z-10 h-[11%] w-auto rounded-full object-cover shadow-[0_10px_20px_rgba(0,0,0,0.45)] sm:h-[13%]"
+          className="pointer-events-none absolute bottom-[2%] right-[18%] z-10 h-[11%] w-auto rounded-full object-cover shadow-[0_10px_20px_rgba(0,0,0,0.45)] sm:h-[13%]"
         />
       )}
     </div>
