@@ -17,8 +17,8 @@ export default function Home() {
       <section className="relative flex h-[100svh] min-h-[100svh] flex-col overflow-hidden">
         <SiteNav active="/" />
 
-        <div className="relative mx-auto flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden px-0 pt-[calc(4rem+env(safe-area-inset-top))] sm:pt-[calc(4.25rem+env(safe-area-inset-top))]">
-          <div className="nf-hoop-3d h-full max-h-full w-auto">
+        <div className="relative mx-auto flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden px-4 pb-32 pt-[calc(4rem+env(safe-area-inset-top))] sm:px-6 sm:pb-10 sm:pt-[calc(4.25rem+env(safe-area-inset-top))] lg:pb-8">
+          <div className="nf-hoop-3d w-[min(78vw,calc(50svh*1.13))] sm:w-[min(68vw,calc(62svh*1.13))] lg:w-[min(58vw,calc(72svh*1.13))] xl:w-[min(52vw,calc(76svh*1.13))]">
             <div className="nf-hoop-3d__board h-full">
               <HoopTV src="/hero.mp4" poster="/hero-poster.jpg" />
             </div>
