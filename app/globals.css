@@ -65,11 +65,16 @@ body {
 }
 
 .nf-hoop-3d {
+  position: relative;
+  height: 100%;
+  width: auto;
+  aspect-ratio: 1014 / 894;
   perspective: 1400px;
   perspective-origin: 50% 35%;
 }
 
 .nf-hoop-3d__board {
+  height: 100%;
   transform: rotateX(7deg) rotateY(-8deg);
   transform-origin: 50% 70%;
 }
@@ -95,9 +100,13 @@ body {
 }
 
 .nf-hoop-3d__floor {
+  position: absolute;
+  left: 12%;
+  right: 12%;
+  bottom: 0.2rem;
   height: 2.5rem;
-  margin-top: -0.75rem;
   background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, transparent 72%);
+  pointer-events: none;
 }
 
 .nf-hoop-well {
@@ -233,5 +242,17 @@ video {
 @media (max-width: 768px) {
   html {
     font-size: 15px;
+  }
+
+  .nf-hoop-3d__board {
+    transform: none;
+  }
+
+  .nf-hoop-frame {
+    filter: drop-shadow(0 12px 18px rgba(0, 0, 0, 0.45));
+  }
+
+  .nf-hoop-3d__floor {
+    height: 1.25rem;
   }
 }

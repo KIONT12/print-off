@@ -17,33 +17,33 @@ export default function SiteNav({ active = '/', variant = 'overlay' }) {
   const shell =
     variant === 'solid'
       ? 'relative z-40 border-b border-white/10 bg-ink/95'
-      : 'absolute inset-x-0 top-0 z-40';
+      : 'absolute inset-x-0 top-0 z-40 bg-gradient-to-b from-ink/85 via-ink/40 to-transparent pt-[env(safe-area-inset-top)]';
 
   return (
     <header className={shell}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-5 sm:px-6 lg:px-8">
-        <Link href="/" className="group flex items-center gap-3">
+      <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-3 px-4 sm:h-[4.25rem] sm:px-6 lg:px-8">
+        <Link href="/" className="group flex min-w-0 items-center gap-2 sm:gap-3">
           <Image
             src="/logo-nav.png"
             alt="New Force"
             width={44}
             height={44}
-            className="h-10 w-10 object-contain transition-transform duration-200 group-hover:scale-105 sm:h-11 sm:w-11"
+            className="h-8 w-8 shrink-0 object-contain transition-transform duration-200 group-hover:scale-105 sm:h-10 sm:w-10"
             priority
           />
-          <span className={`nf-wordmark font-display text-2xl text-chalk sm:text-3xl md:text-4xl ${variant === 'overlay' ? 'nf-on-video' : ''}`}>
+          <span className={`nf-wordmark truncate font-display text-xl leading-none text-chalk sm:text-2xl md:text-3xl ${variant === 'overlay' ? 'nf-on-video' : ''}`}>
             NEW FORCE
           </span>
         </Link>
 
-        <nav className="hidden items-center gap-7 md:flex">
+        <nav className="hidden items-center gap-4 whitespace-nowrap md:flex lg:gap-7">
           {links.map((link) => {
             const isActive = active === link.href;
             return (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`font-label text-sm transition-colors ${
+                className={`font-label text-xs tracking-[0.14em] transition-colors lg:text-sm ${
                   isActive ? 'text-flash' : 'text-chalk/70 hover:text-court'
                 }`}
               >

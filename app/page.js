@@ -14,18 +14,18 @@ export default function Home() {
       </div>
 
       <div className="relative z-10">
-      <section className="relative flex min-h-[100svh] flex-col">
+      <section className="relative flex h-[100svh] min-h-[100svh] flex-col overflow-hidden">
         <SiteNav active="/" />
 
-        <div className="relative mx-auto flex w-full flex-1 items-end px-1 pb-4 pt-14 sm:px-4 sm:pt-16 lg:items-center lg:px-6 lg:pb-6">
-          <div className="nf-hoop-3d mx-auto w-[min(100%,calc(76svh*1.13))] sm:w-[min(100%,calc(88svh*1.13))] lg:w-[min(100vw,calc(104svh*1.13))]">
-            <div className="nf-hoop-3d__board">
+        <div className="relative mx-auto flex min-h-0 w-full flex-1 items-center justify-center overflow-hidden px-0 pt-[calc(4rem+env(safe-area-inset-top))] sm:pt-[calc(4.25rem+env(safe-area-inset-top))]">
+          <div className="nf-hoop-3d h-full max-h-full w-auto">
+            <div className="nf-hoop-3d__board h-full">
               <HoopTV src="/hero.mp4" poster="/hero-poster.jpg" />
             </div>
             <div className="nf-hoop-3d__floor" aria-hidden="true" />
           </div>
 
-          <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-ink via-ink/70 to-transparent px-4 pb-5 pt-16 sm:px-6 lg:inset-x-auto lg:bottom-10 lg:left-10 lg:max-w-xl lg:bg-none lg:px-0 lg:pb-0 lg:pt-0">
+          <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-ink via-ink/70 to-transparent px-4 pb-[max(1rem,env(safe-area-inset-bottom))] pt-10 sm:px-6 sm:pb-5 sm:pt-16 lg:inset-x-auto lg:bottom-10 lg:left-10 lg:max-w-xl lg:bg-none lg:px-0 lg:pb-0 lg:pt-0">
             <p className="nf-reveal nf-on-video font-label text-xs text-flash sm:text-base">
               FIBA BASKETBALL CLUB
             </p>
@@ -44,13 +44,13 @@ export default function Home() {
               <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
                 <Link
                   href="/roster"
-                  className="nf-cta inline-flex items-center justify-center bg-court px-7 py-3.5 font-label text-lg tracking-[0.14em] text-white"
+                  className="nf-cta inline-flex items-center justify-center whitespace-nowrap bg-court px-5 py-3 font-label text-base tracking-[0.14em] text-white sm:px-7 sm:py-3.5 sm:text-lg"
                 >
                   JOIN THE FORCE
                 </Link>
                 <Link
                   href="/3x3"
-                  className="nf-cta inline-flex items-center justify-center border border-chalk/40 px-7 py-3.5 font-label text-lg tracking-[0.14em] text-chalk hover:border-court hover:text-court"
+                  className="nf-cta inline-flex items-center justify-center whitespace-nowrap border border-chalk/40 px-5 py-3 font-label text-base tracking-[0.14em] text-chalk hover:border-court hover:text-court sm:px-7 sm:py-3.5 sm:text-lg"
                 >
                   SEE 3x3
                 </Link>

@@ -31,27 +31,37 @@ export default function HoopTV({ src, poster, showBall = true }) {
     arm();
     play();
 
-    const events = ['canplay', 'canplaythrough', 'loadeddata', 'loadedmetadata', 'playing'];
+    const events = ['canplay', 'canplaythrough', 'loadeddata', 'loadedmetadata'];
     events.forEach((name) => video.addEventListener(name, play));
     document.addEventListener('visibilitychange', play);
     window.addEventListener('pointerdown', play);
     window.addEventListener('touchstart', play, { passive: true });
 
-    const retry = window.setInterval(play, 300);
-    const stopRetry = window.setTimeout(() => window.clearInterval(retry), 8000);
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) play();
+        else video.pause();
+      },
+      { threshold: 0.2 }
+    );
+    io.observe(video);
+
+    const retry = window.setInterval(play, 400);
+    const stopRetry = window.setTimeout(() => window.clearInterval(retry), 4000);
 
     return () => {
       events.forEach((name) => video.removeEventListener(name, play));
       document.removeEventListener('visibilitychange', play);
       window.removeEventListener('pointerdown', play);
       window.removeEventListener('touchstart', play);
+      io.disconnect();
       window.clearInterval(retry);
       window.clearTimeout(stopRetry);
     };
   }, [src]);
 
   return (
-    <div className="relative w-full" style={{ aspectRatio: '1014 / 894' }}>
+    <div className="relative h-full w-full" style={{ aspectRatio: '1014 / 894' }}>
       <div
         className="nf-hoop-well absolute overflow-hidden"
         style={{ top: '7.6%', left: '9.2%', width: '81.6%', height: '54.2%' }}
@@ -81,8 +91,9 @@ export default function HoopTV({ src, poster, showBall = true }) {
         src="/hoop-glass.png"
         alt=""
         fill
-        sizes="(max-width: 640px) 100vw, (max-width: 896px) 94vw, 896px"
+        sizes="100vw"
         className="nf-hoop-frame pointer-events-none object-contain"
+        priority
       />
 
       {showBall && (
