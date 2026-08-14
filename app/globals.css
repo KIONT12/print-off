@@ -64,6 +64,27 @@ body {
   transform-origin: left center;
 }
 
+.nf-hoop-3d {
+  perspective: 1400px;
+  perspective-origin: 50% 35%;
+}
+
+.nf-hoop-3d__board {
+  transform: rotateX(7deg) rotateY(-8deg);
+  transform-origin: 50% 70%;
+  filter: drop-shadow(-18px 28px 26px rgba(0, 0, 0, 0.5));
+}
+
+.nf-hoop-3d__floor {
+  height: 2.5rem;
+  margin-top: -0.75rem;
+  background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.5) 0%, transparent 72%);
+}
+
+.nf-hoop-well {
+  box-shadow: inset 0 0 28px rgba(0, 0, 0, 0.45);
+}
+
 /* Court-line atmosphere (not a flat fill) */
 .nf-logo-wall {
   background-color: var(--ink);
@@ -179,6 +200,11 @@ video {
     animation: none !important;
     opacity: 1 !important;
     transform: none !important;
+  }
+
+  .nf-hoop-3d__board {
+    transform: none !important;
+    filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.4));
   }
 }
 

@@ -14,27 +14,30 @@ export default function Home() {
       </div>
 
       <div className="relative z-10">
-      <section className="relative overflow-hidden">
+      <section className="relative flex min-h-[100svh] flex-col">
         <SiteNav active="/" />
 
-        <div className="mx-auto w-full max-w-4xl px-3 pt-20 sm:px-6 sm:pt-24 lg:px-10">
-          <HoopTV src="/hero.mp4" />
-        </div>
+        <div className="relative mx-auto flex w-full flex-1 items-end px-1 pb-4 pt-14 sm:px-4 sm:pt-16 lg:items-center lg:px-6 lg:pb-6">
+          <div className="nf-hoop-3d mx-auto w-[min(100%,calc(76svh*1.13))] sm:w-[min(100%,calc(88svh*1.13))] lg:w-[min(100vw,calc(104svh*1.13))]">
+            <div className="nf-hoop-3d__board">
+              <HoopTV src="/hero.mp4" />
+            </div>
+            <div className="nf-hoop-3d__floor" aria-hidden="true" />
+          </div>
 
-        <div className="px-4 pb-12 pt-3 sm:px-6 sm:pb-16 sm:pt-4 lg:px-10">
-          <div className="mx-auto w-full max-w-7xl">
+          <div className="absolute inset-x-0 bottom-0 z-20 bg-gradient-to-t from-ink via-ink/70 to-transparent px-4 pb-5 pt-16 sm:px-6 lg:inset-x-auto lg:bottom-10 lg:left-10 lg:max-w-xl lg:bg-none lg:px-0 lg:pb-0 lg:pt-0">
             <p className="nf-reveal nf-on-video font-label text-xs text-flash sm:text-base">
               FIBA BASKETBALL CLUB
             </p>
 
-            <h1 className="nf-reveal nf-reveal-delay-1 nf-on-video nf-wordmark mt-2 font-display text-5xl text-chalk sm:text-8xl md:text-9xl lg:text-[10rem]">
+            <h1 className="nf-reveal nf-reveal-delay-1 nf-on-video nf-wordmark mt-1 font-display text-5xl text-chalk sm:text-7xl lg:text-8xl xl:text-9xl">
               NEW
               <br />
               <span className="text-court">FORCE</span>
             </h1>
 
-            <div className="nf-reveal nf-reveal-delay-2 mt-6 flex max-w-xl flex-col gap-6 sm:mt-8">
-              <p className="nf-on-video text-base leading-relaxed text-chalk sm:text-lg">
+            <div className="nf-reveal nf-reveal-delay-2 mt-3 flex max-w-md flex-col gap-3 sm:mt-5 sm:gap-5">
+              <p className="nf-on-video text-sm leading-relaxed text-chalk sm:text-lg">
                 Training, competition, and international exposure for athletes who play with purpose.
               </p>
 

@@ -4,7 +4,7 @@ export default function HoopTV({ src, poster = '/IMG_1481.jpeg', showBall = true
   return (
     <div className="relative w-full" style={{ aspectRatio: '1014 / 894' }}>
       <div
-        className="absolute overflow-hidden"
+        className="nf-hoop-well absolute overflow-hidden"
         style={{ top: '7.6%', left: '9.2%', width: '81.6%', height: '54.2%' }}
       >
         <video
