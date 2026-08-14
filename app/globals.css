@@ -72,7 +72,16 @@ body {
 .nf-hoop-3d__board {
   transform: rotateX(7deg) rotateY(-8deg);
   transform-origin: 50% 70%;
+}
+
+.nf-hoop-frame {
   filter: drop-shadow(-18px 28px 26px rgba(0, 0, 0, 0.5));
+}
+
+.nf-hoop-video {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  will-change: transform;
 }
 
 .nf-hoop-3d__floor {
@@ -204,6 +213,9 @@ video {
 
   .nf-hoop-3d__board {
     transform: none !important;
+  }
+
+  .nf-hoop-frame {
     filter: drop-shadow(0 16px 24px rgba(0, 0, 0, 0.4));
   }
 }

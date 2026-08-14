@@ -24,7 +24,7 @@ export default function ThreeOnThreePage() {
           </h1>
 
           <div className="relative mt-2 w-full max-w-4xl">
-            <HoopTV src="/3x3-highlight.mp4" />
+            <HoopTV src="/3x3-highlight.mp4" poster="/3x3-poster.jpg" />
           </div>
 
           <Link

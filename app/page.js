@@ -20,7 +20,7 @@ export default function Home() {
         <div className="relative mx-auto flex w-full flex-1 items-end px-1 pb-4 pt-14 sm:px-4 sm:pt-16 lg:items-center lg:px-6 lg:pb-6">
           <div className="nf-hoop-3d mx-auto w-[min(100%,calc(76svh*1.13))] sm:w-[min(100%,calc(88svh*1.13))] lg:w-[min(100vw,calc(104svh*1.13))]">
             <div className="nf-hoop-3d__board">
-              <HoopTV src="/hero.mp4" />
+              <HoopTV src="/hero.mp4" poster="/hero-poster.jpg" />
             </div>
             <div className="nf-hoop-3d__floor" aria-hidden="true" />
           </div>

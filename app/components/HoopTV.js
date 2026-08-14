@@ -1,6 +1,36 @@
+'use client';
+
+import { useEffect, useRef } from 'react';
 import Image from 'next/image';
 
-export default function HoopTV({ src, poster = '/IMG_1481.jpeg', showBall = true }) {
+export default function HoopTV({ src, poster, showBall = true }) {
+  const videoRef = useRef(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+
+    video.muted = true;
+    video.defaultMuted = true;
+    video.playsInline = true;
+
+    const play = () => {
+      const attempt = video.play();
+      if (attempt) attempt.catch(() => {});
+    };
+
+    play();
+    video.addEventListener('canplay', play);
+    video.addEventListener('loadeddata', play);
+    document.addEventListener('visibilitychange', play);
+
+    return () => {
+      video.removeEventListener('canplay', play);
+      video.removeEventListener('loadeddata', play);
+      document.removeEventListener('visibilitychange', play);
+    };
+  }, [src]);
+
   return (
     <div className="relative w-full" style={{ aspectRatio: '1014 / 894' }}>
       <div
@@ -8,16 +38,19 @@ export default function HoopTV({ src, poster = '/IMG_1481.jpeg', showBall = true
         style={{ top: '7.6%', left: '9.2%', width: '81.6%', height: '54.2%' }}
       >
         <video
+          ref={videoRef}
+          src={src}
           autoPlay
           loop
           muted
           playsInline
           preload="auto"
           poster={poster}
-          className="h-full w-full object-cover"
-        >
-          <source src={src} type="video/mp4" />
-        </video>
+          disablePictureInPicture
+          controls={false}
+          className="nf-hoop-video h-full w-full bg-ink object-cover object-center"
+          {...{ 'webkit-playsinline': 'true' }}
+        />
       </div>
 
       <Image
@@ -25,7 +58,7 @@ export default function HoopTV({ src, poster = '/IMG_1481.jpeg', showBall = true
         alt=""
         fill
         sizes="(max-width: 640px) 100vw, (max-width: 896px) 94vw, 896px"
-        className="pointer-events-none object-contain"
+        className="nf-hoop-frame pointer-events-none object-contain"
       />
 
       {showBall && (
